@@ -28,6 +28,12 @@
     }
 
     qs("nav p").addEventListener("click", search);
+
+    let formBtns = qsa("form input");
+
+    for (let i = 0; i < formBtns.length; i++) {
+      formBtns[i].addEventListener("click", changeSort);
+    }
   }
 
   /**
@@ -48,7 +54,24 @@
     }
   }
 
-  /**
+  function changeSort() {
+    if (this.value === "A-Z") {
+      chars.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (this.value === "Z-A") {
+      chars.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (this.value === "Oldest to Newest") {
+      chars.sort((a, b) => a.created_at.localeCompare(b.created_at));
+    } else if (this.value === "Newest to Oldest") {
+      chars.sort((a, b) => b.created_at.localeCompare(a.created_at));
+    }
+
+    id('chars').innerHTML = "";
+    for (let i = 0; i < chars.length; i++) {
+      populateCharacter(chars[i]);
+    }
+  }
+
+/**
  * Calculates similarity between two strings using exact and fuzzy matching
  * @param {string} str1 - First string to compare
  * @param {string} str2 - Second string to compare
@@ -71,11 +94,11 @@ function areSimilar(str1, str2, threshold = 0.4) {
 }
 
 /**
-* Calculates fuzzy similarity score between two strings
-* @param {string} str1 - First string
-* @param {string} str2 - Second string
-* @returns {number} - Similarity score between 0 and 1
-*/
+ * Calculates fuzzy similarity score between two strings
+ * @param {string} str1 - First string
+ * @param {string} str2 - Second string
+ * @returns {number} - Similarity score between 0 and 1
+ */
 function getFuzzySimilarity(str1, str2) {
   const s1 = str1.toLowerCase();
   const s2 = str2.toLowerCase();
@@ -91,11 +114,11 @@ function getFuzzySimilarity(str1, str2) {
 }
 
 /**
-* Calculates the Levenshtein distance between two strings
-* @param {string} str1 - First string
-* @param {string} str2 - Second string
-* @returns {number} - The minimum number of single-character edits needed
-*/
+ * Calculates the Levenshtein distance between two strings
+ * @param {string} str1 - First string
+ * @param {string} str2 - Second string
+ * @returns {number} - The minimum number of single-character edits needed
+ */
 function levenshteinDistance(str1, str2) {
   const matrix = Array(str2.length + 1).fill(null)
       .map(() => Array(str1.length + 1).fill(null));

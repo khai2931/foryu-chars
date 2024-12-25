@@ -9,8 +9,20 @@
   <body>
     <h1>Foryu Characters</h1>
     <nav>
-      <input type="text"><p>Search</p>
+      <input type="text">
+      <p>Search</p>
     </nav>
+    <form action="">
+      <h2>Sort By:</h2>
+      <input type="radio" id="a-z" name="sorting" value="A-Z">
+      <label for="a-z">A-Z</label><br>
+      <input type="radio" id="z-a" name="sorting" value="Z-A">
+      <label for="z-a">Z-A</label><br>
+      <input type="radio" id="oldToNew" name="sorting" value="Oldest to Newest">
+      <label for="oldToNew">Oldest to Newest</label><br>
+      <input type="radio" id="newToOld" name="sorting" value="Newest to Oldest">
+      <label for="newToOld">Newest to Oldest</label><br>
+    </form>
     <div id="chars"></div>
   </body>
 </html>
