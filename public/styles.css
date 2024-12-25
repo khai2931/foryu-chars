@@ -1,0 +1,81 @@
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body > h1 {
+  text-align: center;
+  font-size: 5ch;
+}
+
+body > nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+body > nav input {
+  border-radius: 10px;
+  margin-right: 20px;
+  padding: 10px;
+  font-family: inherit;
+  border: 1px solid grey;
+  height: 20px;
+}
+
+body > nav p {
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid grey;
+  transition: 0.2s;
+}
+
+body > nav p:hover {
+  color: white;
+  background-color: rgb(0, 0, 0);
+}
+
+.hidden {
+  display: none;
+}
+
+#chars {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.character-card {
+  width: 33%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: white;
+  transition: transform 0.2s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-4px);
+}
+
+.character-image {
+  width: 100%;
+  /* height: 200px; */
+  object-fit: cover;
+}
+
+.character-content {
+  padding: 20px;
+}
+
+.character-name {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  color: #2d3748;
+}
+
+.character-description {
+  margin: 0;
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 16px;
+}
